@@ -504,21 +504,17 @@ function find_triangle_square_overlap(t1::Point2D{Float64},
 	# t1, t3 and square bottom
 	add_intersection!(i10ns, t1, t3, s1, s3, t1, t2, t3) 
 	
-	# At this point, if we have no intersections, we can't find anymore.
-	# For every edge that goes out, there's one that goes in. 
-	if length(i10ns) != 0
-		# t2, t3 and square left
-		add_intersection!(i10ns, t2, t3, s1, s2, t1, t2, t3)
-		
-		# t2, t3 and square top
-		add_intersection!(i10ns, t2, t3, s2, s4, t1, t2, t3) 
-		
-		# t2, t3 and square right
-		add_intersection!(i10ns, t2, t3, s3, s4, t1, t2, t3) 
+	# t2, t3 and square left
+	add_intersection!(i10ns, t2, t3, s1, s2, t1, t2, t3)
+	
+	# t2, t3 and square top
+	add_intersection!(i10ns, t2, t3, s2, s4, t1, t2, t3) 
+	
+	# t2, t3 and square right
+	add_intersection!(i10ns, t2, t3, s3, s4, t1, t2, t3) 
 
-		# t2, t3 and square bottom
-		add_intersection!(i10ns, t2, t3, s1, s3, t1, t2, t3) 
-	end
+	# t2, t3 and square bottom
+	add_intersection!(i10ns, t2, t3, s1, s3, t1, t2, t3) 
 
 	if length(i10ns) < 6
 		# let's check all the vertices
